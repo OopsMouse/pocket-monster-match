@@ -1,0 +1,12 @@
+extends layout
+block content
+	div.result
+		| あなたのモンスターは、
+		b #{monster.name}
+		| です。
+	a.tweet
+		i.fa.fa-twitter-square
+		|  Twitterにつぶやく
+	script.
+		var url = 'http://twitter.com/home?status=' + encodeURIComponent($('.result').text());
+		$('.tweet').attr('href', url);

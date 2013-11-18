@@ -74,6 +74,10 @@ var calcDeviation = function(args, callback) {
   });
 };
 
+app.get('/', function(req, res) {
+  res.redirect('/monster');
+});
+
 app.get('/monster', function(req, res) {
   res.render('monster');
 });
@@ -83,9 +87,9 @@ app.get('/search', function(req, res) {
     if (err) {
       res.json(400, err);
     } else {
-      var monster = tree.nearest(result, 1);
+      var monster = tree.nearest(result, 1)[0][0].obj;
       console.log(monster);
-      res.json(200, monster);
+      res.render('match', { monster: monster });
     }
   });
 });
