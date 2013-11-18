@@ -1,0 +1,45 @@
+extends layout
+block content
+	form(action='/search', method='GET', role='form')
+		div.from-group
+			label
+				| 年齢
+			select.form-control.select-age(name='age')
+		div.from-group
+			label
+				| 身長
+			select.form-control.select-height(name='height')
+		div.from-group
+			label
+				| 体重
+			select.form-control.select-weight(name='weight')
+		div.radio
+			label
+				input#men(type='radio', name='sex', value=0, checked)
+				| Men
+		div.radio
+			label
+				input#women(type='radio', name='sex', value=1)
+				| Women
+		button.btn.btn-primary(type='submit')
+			| start matching
+	script.
+		for(var i = 7; i < 79; i ++) {
+			if (i == 25)
+				$('.select-age').append('<option value=\''+ i +'\' selected>'+ i +'歳</option>')
+			else
+				$('.select-age').append('<option value=\''+ i +'\'>'+ i +'歳</option>')
+		}
+		for(var i = 100; i < 250; i ++) {
+			if (i == 165)
+				$('.select-height').append('<option value=\''+ i +'\' selected>'+ i +'cm</option>')
+			else
+				$('.select-height').append('<option value=\''+ i +'\'>'+ i +'cm</option>')
+		}
+		for(var i = 20; i < 200; i ++) {
+			if (i == 55)
+				$('.select-weight').append('<option value=\''+ i +'\' selected>'+ i +'kg</option>')
+			else
+				$('.select-weight').append('<option value=\''+ i +'\'>'+ i +'kg</option>')
+		}
+
